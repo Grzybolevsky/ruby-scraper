@@ -12,4 +12,5 @@
 *.a
 mkmf.log
 Gemfile.lock
+items.db
 .idea/

@@ -1,51 +1,30 @@
-# Untitled
+# Introduction
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library
-into a gem. Put your Ruby code in the file `lib/untitled`. To experiment with that code, run `bin/console` for an
-interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is `amazon.com` items scraper.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'untitled'
-```
-
-And then execute:
+To install all required gems
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install untitled
-
 ## Usage
 
-TODO: Write usage instructions here
+Simply run
 
-## Development
+    $ ruby ./scraper.rb
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can
-also run `bin/console` for an interactive prompt that will allow you to experiment.
+If ran with argument it will treat is as a keyword (by default it's `smartphone`)
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the
-version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version,
-push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    $ ruby ./scraper.rb "keyword1 keyword2"
 
-## Contributing
+You can use any `amazon` website (e.g. `amazon.co.uk`, `amazon.de`...). Change `AMAZON_URL` constant to valid source. 
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/untitled. This project is intended
-to be a safe, welcoming space for collaboration, and contributors are expected to adhere to
-the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Be aware that scraping is not allowed on Amazon and your IP address may get blocked.
+If that happens it will result in following error:
 
-## License
+    ./scraper.rb:32:in `<main>': undefined method `content' for nil:NilClass (NoMethodError)
+    pages_count = response.css('span.s-pagination-item.s-pagination-disabled')[-1].content.to_i\r
+    ^^^^^^^^
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Untitled project’s codebases, issue trackers, chat rooms and mailing lists is expected to
-follow the [code of conduct](https://github.com/[USERNAME]/untitled/blob/master/CODE_OF_CONDUCT.md).
+The items are saved in SQLite3 db (file called 'items.db') and are printed each time the item is found.

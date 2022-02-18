@@ -2,10 +2,6 @@
 
 source 'https://rubygems.org'
 
-gem 'byebug'
-gem 'csv'
-gem 'ffi'
 gem 'httparty'
 gem 'nokogiri'
-gem 'watir'
-gem 'webdrivers'
+gem 'sequel'
